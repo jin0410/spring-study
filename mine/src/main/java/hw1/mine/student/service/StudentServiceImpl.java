@@ -2,6 +2,7 @@ package hw1.mine.student.service;
 
 import hw1.mine.student.exception.CustomException;
 import hw1.mine.student.exception.ErrorCode;
+import hw1.mine.student.model.CreateStudent;
 import hw1.mine.student.model.Student;
 import hw1.mine.student.model.UpdateStudent;
 import hw1.mine.student.repository.StudentRepository;
@@ -19,8 +20,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void save(Student student) {
-        studentRepository.save(student);
+    public void save(CreateStudent student) {
+        Student newStudent = new Student();
+        newStudent.setName(student.getName());
+        newStudent.setDept(student.getDept());
+        studentRepository.save(newStudent);
     }
 
     @Override
@@ -32,10 +36,13 @@ public class StudentServiceImpl implements StudentService {
     public void update(UpdateStudent newStudent) {
         Student student = studentRepository.findById(newStudent.getId())
                 .orElseThrow(() -> new CustomException(ErrorCode.NO_SUCH_STUDENT));
+        student.setName(newStudent.getName());
+        student.setDept(newStudent.getDept());
     }
 
     @Override
     public void delete(Long id) {
-        studentRepository.deleteById(id);
+        Student student = studentRepository.deleteById(id)
+                .orElseThrow(() -> new CustomException(ErrorCode.NO_SUCH_STUDENT));
     }
 }

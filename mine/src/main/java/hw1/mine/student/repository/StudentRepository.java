@@ -22,11 +22,15 @@ public class StudentRepository {
         return Optional.ofNullable(store.get(studentId));
     }
 
-    public void deleteById(Long studentId) {
-        store.remove(studentId);
+    public Optional<Student> deleteById(Long studentId) {
+        return Optional.ofNullable(store.remove(studentId));
     }
 
     public List<Student> findAll() {
         return new ArrayList<>(store.values());
+    }
+
+    public void clearAll() {
+        store.clear();
     }
 }

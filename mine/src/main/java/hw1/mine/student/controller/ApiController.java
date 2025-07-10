@@ -3,6 +3,7 @@ package hw1.mine.student.controller;
 
 import hw1.mine.restapi.Message;
 import hw1.mine.restapi.RestResponse;
+import hw1.mine.student.model.CreateStudent;
 import hw1.mine.student.model.Student;
 import hw1.mine.student.model.UpdateStudent;
 import hw1.mine.student.service.StudentService;
@@ -53,22 +54,6 @@ public class ApiController {
 
     @PutMapping("/students") // id, name, dept 입력
     public ResponseEntity<RestResponse> update(@RequestBody @Valid UpdateStudent student) {
-//        RestResponse<Object> restResponse = new RestResponse<>();
-//        if (studentService.update(student)) {
-//            restResponse = RestResponse.builder()
-//                    .code(HttpStatus.OK.value())
-//                    .httpStatus(HttpStatus.OK)
-//                    .message(Message.UPDATE_STUDENTS.label())
-//                    .build();
-//        } else {
-//            restResponse = RestResponse.builder()
-//                    .code(HttpStatus.NOT_FOUND.value())
-//                    .httpStatus(HttpStatus.NOT_FOUND)
-//                    .message(Message.FAIL_UPDATE_STUDENTS.label())
-//                    .build();
-//        }
-//
-//        return new ResponseEntity<>(restResponse, restResponse.getHttpStatus());
         studentService.update(student);
         return ResponseEntity.ok(
                 RestResponse.builder()
@@ -80,7 +65,7 @@ public class ApiController {
     }
 
     @PostMapping("/students") // name, dept 입력
-    public ResponseEntity<RestResponse> create(@RequestBody Student student) {
+    public ResponseEntity<RestResponse> create(@RequestBody @Valid CreateStudent student) {
         studentService.save(student);
         RestResponse<Object> restResponse = new RestResponse<>();
         restResponse = RestResponse.builder()
