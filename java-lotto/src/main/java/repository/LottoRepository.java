@@ -1,5 +1,8 @@
+package repository;
+
 import java.util.ArrayList;
 import java.util.List;
+import model.Lotto;
 
 public class LottoRepository {
 
@@ -7,13 +10,13 @@ public class LottoRepository {
     // lotto list
     List<Lotto> lottoList;
 
-    public LottoRepository(){
+    public LottoRepository() {
         lottoList = new ArrayList<>();
     }
 
     // method
     // insertLotto
-    public void insertLotto(Lotto newLotto){
+    public void insertLotto(Lotto newLotto) {
         lottoList.add(newLotto);
     }
 

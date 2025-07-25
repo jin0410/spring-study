@@ -1,19 +1,24 @@
+package controller;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import repository.LottoRepository;
+import service.LottoService;
+import view.InputView;
+import view.OutputView;
 
 public class LottoController {
 
     private static final Scanner sc = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public void execute(LottoRepository lottoRepository, LottoService lottoService, InputView inputView,
+                        OutputView outputView) {
 
         int buyMoney;
         int buyAmount;
-        LottoRepository lottoRepository = new LottoRepository();
-        LottoService lottoService = new LottoService(lottoRepository);
 
         System.out.println("구입금액을 입력해 주세요.");
         while (true) {
