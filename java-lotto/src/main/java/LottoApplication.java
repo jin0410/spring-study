@@ -8,6 +8,7 @@ public class LottoApplication {
     public static void main(String[] args) {
         LottoController lottoController = new LottoController(new LottoRepository(), new LottoService(),
                 new InputView(), new OutputView());
+        lottoController.execute();
 
     }
 }

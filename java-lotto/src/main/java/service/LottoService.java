@@ -19,9 +19,13 @@ public class LottoService {
     // lottoRepository
     private LottoRepository lottoRepository;
 
-
     // constructor
-    public LottoService(LottoRepository lottoRepository) {
+    // public LottoService(LottoRepository lottoRepository) {
+//        this.lottoRepository = lottoRepository;
+//    }
+
+
+    public void setLottoRepository(LottoRepository lottoRepository) {
         this.lottoRepository = lottoRepository;
     }
 
